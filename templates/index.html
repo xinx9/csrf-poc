@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<header> 
-		<title> this some shit my guy </title>
+		<title> cswsh test </title>
 	</header>
 	<body>
-		<h1> this some bull shit </h1>
+		<h1> this is a CSWSH test </h1>
 		<input type="file" name="inputfile" id="inputfile">
 		<br>
 		<pre id="output"></pre>
@@ -12,11 +12,10 @@
 		<button onclick="sendData()">Submit</button>
 		<pre id="databeingsent"></pre>
 	</body>
-
 	<script type="text/javascript">
-//////////////////////////////////////////////////////////////////
-//	FILE READER
-//////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////
+		//	FILE READER
+		//////////////////////////////////////////////////////////////////
 		var x = "";
 		document.getElementById('inputfile').addEventListener('change', function(){
 			var fr=new FileReader();
@@ -27,28 +26,20 @@
 				x = data;
 				console.log(x);
 			}
-				// fr.readAsText(this.files[0]);
-				//fr.readAsBinaryString(this.files[0]);
 				fr.readAsArrayBuffer(this.files[0]);
-				
-
 		});
-
-
-//////////////////////////////////////////////////////////////////
-//	DATA SEND
-//////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////
+		//	DATA SEND
+		//////////////////////////////////////////////////////////////////
 		function sendData(){
 			var webSocket = new WebSocket('ws://192.168.2.162:80/');
 			document.getElementById("databeingsent").textContent="sending: " +x;
 			webSocket.onmessage = function(event){
-				alert("YOU'VE BEEN PWNED NOOB!!!");
+				alert("YOU'VE BEEN HACKED!!!");
 			}
-
 			webSocket.onopen = function(event){
 				webSocket.send(x);
 			}
 		}
 	</script>
-	<!--	<script src="js/rawdataread.js"></script> -->
 </html>
